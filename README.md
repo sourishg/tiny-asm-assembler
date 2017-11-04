@@ -1,6 +1,6 @@
 # Tiny ASM Assembler
 
-This can handle the following operations on byte-sized registers: `mov`, `cmp`, `jmp`, `jc`, `jl`, `int`, `add`. Additionally `mov` works on word-sized registers too. Please note that the forward jump functionality isn't implemented yet.
+This can handle the following operations on byte-sized registers: `mov`, `cmp`, `jmp`, `jc`, `jl`, `int`, `add`. Additionally `mov` works on word-sized registers too.
 
 # Compiling and Running
 
