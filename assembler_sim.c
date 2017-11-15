@@ -29,8 +29,6 @@ int main(void) {
   }
   i = 0;
   int j = 0;
-  //printf(".model small\n");
-  //printf(".code\n");
   do {
     scanf("%s", t);
     if (t[1] == ':') {
@@ -44,8 +42,6 @@ int main(void) {
       i = i+2;
       mcodes[j++] = 205;
       mcodes[j++] = g;
-      //printf("db 205\n");
-      //printf("db %d\n", g);
     }
     if (strcmp(t, "jc") == 0) {
       scanf("%s", u);
@@ -56,24 +52,18 @@ int main(void) {
       } else {
         mcodes[j++] = sy[u[0]] - i;
       }
-      //printf("db 114\n");
-      //printf("db %d\n", sy[u[0]] - i);
     }
     if (strcmp(t, "jmp") == 0) {
       scanf("%s", u);
       i = i+2;
       mcodes[j++] = 235;
       mcodes[j++] = sy[u[0]] - i;
-      //printf("db 235\n");
-      //printf("db %d\n", sy[u[0]] - i);
     }
     if (strcmp(t, "jl") == 0) {
       scanf("%s", u);
       i = i+2;
       mcodes[j++] = 124;
       mcodes[j++] = sy[u[0]] - i;
-      //printf("db 124\n");
-      //printf("db %d\n", sy[u[0]] - i);
     }
     if (strcmp(t, "add") == 0) {
       scanf("%s%s", u, v);
@@ -82,15 +72,10 @@ int main(void) {
         mcodes[j++] = 128;
         mcodes[j++] = 192 + f(u);
         mcodes[j++] = atoi(v);
-        //printf("db 128\n");
-        //printf("db %d\n", 192 + f(u));
-        //printf("db %d\n", atoi(v));
       } else {
         i = i+2;
         mcodes[j++] = 2;
         mcodes[j++] = 192 + f(u)*8 + f(v);
-        //printf("db 2\n");
-        //printf("db %d\n", 192 + f(u)*8 + f(v));
       }
     }
     if (strcmp(t, "cmp") == 0) {
@@ -100,15 +85,10 @@ int main(void) {
         mcodes[j++] = 128;
         mcodes[j++] = 248 + f(u);
         mcodes[j++] = atoi(v);
-        //printf("db 128\n");
-        //printf("db %d\n", 248 + f(u));
-        //printf("db %d\n", atoi(v));
       } else {
         i = i+2;
         mcodes[j++] = 58;
         mcodes[j++] = 192 + f(u)*8 + f(v);
-        //printf("db 58\n");
-        //printf("db %d\n", 192 + f(u)*8 + f(v));
       }
     }
     if (strcmp(t, "mov") == 0) {
@@ -118,29 +98,20 @@ int main(void) {
         if (f(v) < 200) {
           mcodes[j++] = 138;
           mcodes[j++] = 192 + f(u)*8 + f(v);
-          //printf("db 138\n");
-          //printf("db %d\n", 192 + 8*f(u) + f(v));
         } else {
           mcodes[j++] = 176 + f(u);
           mcodes[j++] = atoi(v);
-          //printf("db %d\n", 176 + f(u));
-          //printf("db %d\n", atoi(v));
         }
       } else {
         if (f(v) < 200) {
           i = i+2;
           mcodes[j++] = 139;
           mcodes[j++] = 192 + (f(u)-8)*8 + f(v)-8;
-          //printf("db 139\n");
-          //printf("db %d\n", 192 + 8*(f(u)-8) + f(v)-8);
         } else {
           i = i+3;
           mcodes[j++] = 184 + f(u)-8;
           mcodes[j++] = (atoi(v) % 256);
           mcodes[j++] = (atoi(v) / 256);
-          //printf("db %d\n", 184 + f(u)-8);
-          //printf("db %d\n", (atoi(v) % 256));
-          //printf("db %d\n", (atoi(v) / 256));
         }
       }
     }
@@ -148,6 +119,5 @@ int main(void) {
   for (int k = 0; k < j; k++)
     printf("%d ", mcodes[k]);
   printf("-1");
-  //printf("end\n");
   return 0;
 }

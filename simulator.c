@@ -59,8 +59,15 @@ int main(int argc, char const *argv[])
       z = a[pc++];
       p = y % 8;
       q = r[p];
-      if (y > 191 && y < 200)
+      if (y > 191 && y < 200) {
         r[p] += z;
+        if (r[p] >= 256) {
+          r[p] -= 256;
+          cy = 1;
+        } else {
+          cy = 0;
+        }
+      }
       if (y > 247) {
         if (q < z)
           cy = 1;
